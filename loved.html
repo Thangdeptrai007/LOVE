@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta property="og:title" content="Gửi cậu một trái tim nè 💘" />
+    <meta
+      property="og:description"
+      content="Trang web dễ thương gửi tặng trái tim và lời tỏ tình!"
+    />
+    <meta
+      property="og:image"
+      content="https://media.tenor.com/5C5wCz5i0J0AAAAi/bear-kiss-bear-love.gif"
+    />
+    <meta property="og:url" content="https://github.com/Thangdeptrai007/LOVE" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Gửi cậu một trái tim nè 💘</title>
+    <style>
+      body {
+        background: #ffe6f2;
+        font-family: "Comic Sans MS", cursive;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        color: #ff69b4;
+        font-size: 2.5em;
+        text-shadow: 2px 2px #fff;
+      }
+
+      .heart {
+        font-size: 100px;
+        animation: beat 1s infinite;
+        cursor: pointer;
+      }
+
+      @keyframes beat {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .message {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px pink;
+        margin: 20px;
+      }
+
+      .btn {
+        background: #ff85a2;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 25px;
+        font-size: 1.2em;
+        margin: 10px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .btn:hover {
+        transform: rotate(5deg) scale(1.1);
+        background: #ff6699;
+      }
+
+      #noBtn {
+        transition: all 0.5s;
+        position: relative;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .hearts {
+        position: fixed;
+        top: -50px;
+        animation: fall 3s linear infinite;
+      }
+
+      @keyframes fall {
+        to {
+          top: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="hearts">💖</div>
+      <h1>Hey cậu! Tớ có điều muốn nói nè 🥰</h1>
+
+      <div class="message">
+        <p>Từ khi gặp cậu, cuộc sống tớ như...</p>
+        <p>🎵 Bỗng dưng muốn hát - 🎮 Muốn chơi game chung</p>
+        <p>👉👈 Cậu làm người yêu tớ nhé?</p>
+      </div>
+
+      <div class="heart" onclick="showAnswer()">💝</div>
+
+      <button class="btn" id="yesBtn" onclick="answerYes()">
+        Dạ chắc chắn rồi!
+      </button>
+      <button class="btn" id="noBtn" onmouseover="moveButton()">
+        Cần suy nghĩ thêm...
+      </button>
+
+      <div id="answer" class="hidden">
+        <h2>Yayyyy!!! 🎉🎉🎉</h2>
+        <p>Tối nay tớ mời đi trà sữa nhaaaa! 🧋💖</p>
+        <img
+          src="https://media.tenor.com/5C5wCz5i0J0AAAAi/bear-kiss-bear-love.gif"
+          width="200"
+        />
+      </div>
+    </div>
+
+    <script>
+      function moveButton() {
+        const btn = document.getElementById("noBtn");
+        btn.style.transform = `translate(${Math.random() * 300 - 150}px, ${
+          Math.random() * 300 - 150
+        }px)`;
+        btn.style.rotate = `${Math.random() * 360}deg`;
+      }
+
+      function showAnswer() {
+        document.getElementById("answer").classList.remove("hidden");
+        createHearts();
+      }
+
+      function answerYes() {
+        alert("Ỏooooooo!!! Tớ hạnh phúc quáaaaa 😭💘");
+        createHearts();
+        document.getElementById("answer").classList.remove("hidden");
+      }
+
+      function createHearts() {
+        const hearts = ["💖", "💘", "💝", "💗", "💓"];
+        for (let i = 0; i < 50; i++) {
+          const heart = document.createElement("div");
+          heart.className = "hearts";
+          heart.style.left = Math.random() * window.innerWidth + "px";
+          heart.style.animationDelay = Math.random() * 3 + "s";
+          heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+          document.body.appendChild(heart);
+
+          setTimeout(() => heart.remove(), 3000);
+        }
+      }
+    </script>
+  </body>
+</html>
